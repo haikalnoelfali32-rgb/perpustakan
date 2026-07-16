@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pustaka — Perpustakaan Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======================================================= -->
+<!-- VIEW 1: LANDING PAGE (PUBLIK) — tanpa sidebar, pakai navbar -->
+<!-- ======================================================= -->
+<div class="view active" id="view-landing">
+
+  <nav class="navbar">
+    <div class="brand">Pustaka<span>.</span></div>
+    <ul class="navbar-links">
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#buku">Koleksi Buku</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+    <button class="btn-login" onclick="switchTo('login')">Masuk / Login</button>
+  </nav>
+
+  <header class="hero" id="beranda">
+    <div class="kicker">Perpustakaan Kota</div>
+    <h1>Tempat Membaca, Meminjam, dan Belajar untuk Semua</h1>
+    <p>Jelajahi ribuan koleksi buku, ajukan peminjaman secara online, dan ambil langsung di perpustakaan.</p>
+    <button class="btn-primary" onclick="switchTo('login')">Mulai Jelajahi</button>
+  </header>
+
+  <section class="section" id="buku">
+    <div class="section-head">
+      <div class="kicker">Koleksi Pilihan</div>
+      <h2>Beberapa Buku di Perpustakaan Kami</h2>
+      <p>Sebagian kecil dari 1.284 judul yang tersedia</p>
+    </div>
+    <div class="book-showcase row row-cols-2 row-cols-md-4 g-3">
+      <div class="col">
+        <div class="book-tile">
+          <div class="cover">FT</div>
+          <div class="info"><div class="title">Filosofi Teras</div><div class="author">Henry Manampiring</div></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="book-tile">
+          <div class="cover">SP</div>
+          <div class="info"><div class="title">Sapiens</div><div class="author">Yuval Noah Harari</div></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="book-tile">
+          <div class="cover">BM</div>
+          <div class="info"><div class="title">Bumi Manusia</div><div class="author">Pramoedya A. Toer</div></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="book-tile">
+          <div class="cover">AH</div>
+          <div class="info"><div class="title">Atomic Habits</div><div class="author">James Clear</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tentang" style="background:#F2F1EC;">
+    <div class="about-wrap row g-4 align-items-center">
+      <div class="about-text col-md-6">
+        <div class="kicker">Tentang Kami</div>
+        <h2 style="font-size:24px;color:var(--navy);font-weight:800;margin-bottom:10px;">Melayani Pembaca Sejak 1998</h2>
+        <p>Perpustakaan kami menyediakan akses gratis ke ribuan koleksi buku fiksi maupun non-fiksi bagi seluruh warga.</p>
+        <p>Sistem peminjaman kini dapat diajukan secara online — anggota tinggal datang ke lokasi untuk mengambil buku yang sudah disetujui.</p>
+        <div class="stat-block">
+          <div><div class="n">1.284</div><div class="l">Judul Buku</div></div>
+          <div><div class="n">312</div><div class="l">Anggota Aktif</div></div>
+          <div><div class="n">27</div><div class="l">Tahun Melayani</div></div>
+        </div>
+      </div>
+      <div class="col-md-6"><div class="about-visual">Foto / Ilustrasi Perpustakaan</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="kontak">
+    <div class="section-head">
+      <div class="kicker">Hubungi Kami</div>
+      <h2>Kontak & Lokasi</h2>
+    </div>
+    <div class="contact-wrap row g-4">
+      <div class="contact-info col-md-6">
+        <div><div class="label">Alamat</div><div class="value">Jl. Merdeka No. 12, Sorong, Papua Barat Daya</div></div>
+        <div><div class="label">Jam Operasional</div><div class="value">Senin–Sabtu, 08.00–16.00 WIT</div></div>
+        <div><div class="label">Telepon</div><div class="value">(0951) 123-456</div></div>
+        <div><div class="label">Email</div><div class="value">halo@pustaka.id</div></div>
+      </div>
+      <form class="contact-form col-md-6" onsubmit="return false;">
+        <input type="text" class="form-control mb-3" placeholder="Nama Anda">
+        <input type="email" class="form-control mb-3" placeholder="Email Anda">
+        <textarea rows="4" class="form-control mb-3" placeholder="Pesan Anda"></textarea>
+        <button type="submit" class="btn btn-dark w-100">Kirim Pesan</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">© 2026 Perpustakaan Pustaka. Seluruh hak cipta dilindungi.</footer>
+</div>
+
+
+<!-- ======================================================= -->
+<!-- VIEW LOGIN — penghubung antara landing, user, dan admin -->
+<!-- ======================================================= -->
+<div class="view" id="view-login">
+  <nav class="navbar">
+    <div class="brand" style="cursor:pointer;" onclick="switchTo('landing')">Pustaka<span>.</span></div>
+    <button class="btn-login" onclick="switchTo('landing')">← Kembali ke Beranda</button>
+  </nav>
+
+  <div class="login-wrap">
+    <div class="login-card card shadow-sm">
+      <div class="kicker" style="text-align:center;">Masuk ke Akun</div>
+      <h2 style="text-align:center;font-size:22px;color:var(--navy);font-weight:800;margin-bottom:18px;">Login Pustaka</h2>
+
+      <div class="role-tabs btn-group w-100 mb-3" role="group">
+        <button class="role-tab active" id="tab-anggota" onclick="setLoginRole('anggota')">Anggota</button>
+        <button class="role-tab" id="tab-admin" onclick="setLoginRole('admin')">Admin / Pustakawan</button>
+      </div>
+
+      <form class="contact-form" onsubmit="return doLogin(event)">
+        <input type="text" class="form-control mb-3" id="login-username" placeholder="Username atau ID Anggota (contoh: haikal, dedi, maya)" value="haikal">
+        <input type="password" class="form-control mb-3" id="login-password" placeholder="Kata Sandi" value="12345678">
+        <button type="submit" class="btn btn-dark w-100">Masuk sebagai <span id="login-role-label">Anggota</span></button>
+      </form>
+      <div class="login-hint">Demo: gunakan username <b>haikal</b>, <b>dedi</b>, atau <b>maya</b> untuk melihat riwayat peminjaman berbeda. Kata sandi bebas, tidak diverifikasi.</div>
+    </div>
+  </div>
+
+  <footer class="footer">© 2026 Perpustakaan Pustaka. Seluruh hak cipta dilindungi.</footer>
+</div>
+
+
+<!-- ======================================================= -->
+<!-- VIEW 2: USER (ANGGOTA) — dengan sidebar -->
+<!-- ======================================================= -->
+<div class="view" id="view-user">
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">Pustaka<span>.</span><div class="sub">MEMBER AREA</div></div>
+      <div class="nav-item active" data-page="u-katalog"><span class="label">Katalog Buku</span></div>
+      <div class="nav-item" data-page="u-pengajuan"><span class="label">Pengajuan Pinjaman</span></div>
+      <div class="nav-item" data-page="u-riwayat"><span class="label">Riwayat Peminjaman</span></div>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="avatar" id="user-avatar">H</div>
+          <div><div class="name" id="user-name">Haikal Ramadhan</div><div class="role" id="user-id">PST-0231</div></div>
+        </div>
+        <button class="btn ghost logout-btn" onclick="switchTo('login')">Keluar</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="page active" id="page-u-katalog">
+        <div class="page-header">
+          <div><div class="eyebrow">Selamat Datang</div><h1>Katalog Buku</h1><div class="desc">Pilih buku, lalu ajukan peminjaman</div></div>
+        </div>
+
+        <div class="toolbar">
+          <input class="search-input" type="text" id="book-search" placeholder="Cari judul atau penulis...">
+          <div class="tag-filter" id="book-filter">
+            <button class="active" data-cat="semua">Semua</button>
+            <button data-cat="fiksi">Fiksi</button>
+            <button data-cat="non-fiksi">Non-Fiksi</button>
+            <button data-cat="pengembangan-diri">Pengembangan Diri</button>
+            <button data-cat="sains">Sains</button>
+          </div>
+        </div>
+
+        <div class="book-grid" id="book-grid">
+          <div class="book-card" data-cat="pengembangan-diri" data-title="filosofi teras henry manampiring"><div class="book-cover">FT</div><div class="book-info"><div class="title">Filosofi Teras</div><div class="author">Henry Manampiring</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="non-fiksi" data-title="sapiens yuval noah harari"><div class="book-cover">SP</div><div class="book-info"><div class="title">Sapiens</div><div class="author">Yuval Noah Harari</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="fiksi" data-title="bumi manusia pramoedya ananta toer"><div class="book-cover">BM</div><div class="book-info"><div class="title">Bumi Manusia</div><div class="author">Pramoedya A. Toer</div><button class="btn ghost" disabled>Stok Habis</button></div></div>
+          <div class="book-card" data-cat="pengembangan-diri" data-title="atomic habits james clear"><div class="book-cover">AH</div><div class="book-info"><div class="title">Atomic Habits</div><div class="author">James Clear</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="fiksi" data-title="laut bercerita leila s chudori"><div class="book-cover">LB</div><div class="book-info"><div class="title">Laut Bercerita</div><div class="author">Leila S. Chudori</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="fiksi" data-title="negeri 5 menara ahmad fuadi"><div class="book-cover">N5</div><div class="book-info"><div class="title">Negeri 5 Menara</div><div class="author">Ahmad Fuadi</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="fiksi" data-title="pulang leila s chudori"><div class="book-cover">PL</div><div class="book-info"><div class="title">Pulang</div><div class="author">Leila S. Chudori</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="pengembangan-diri" data-title="rich dad poor dad robert kiyosaki"><div class="book-cover">RD</div><div class="book-info"><div class="title">Rich Dad Poor Dad</div><div class="author">Robert Kiyosaki</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="fiksi" data-title="perahu kertas dee lestari"><div class="book-cover">PK</div><div class="book-info"><div class="title">Perahu Kertas</div><div class="author">Dee Lestari</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="fiksi" data-title="cantik itu luka eka kurniawan"><div class="book-cover">CI</div><div class="book-info"><div class="title">Cantik Itu Luka</div><div class="author">Eka Kurniawan</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="fiksi" data-title="sang pemimpi andrea hirata"><div class="book-cover">SP2</div><div class="book-info"><div class="title">Sang Pemimpi</div><div class="author">Andrea Hirata</div><button class="btn ghost" disabled>Stok Habis</button></div></div>
+          <div class="book-card" data-cat="non-fiksi" data-title="sejarah singkat waktu stephen hawking"><div class="book-cover">SW</div><div class="book-info"><div class="title">Sejarah Singkat Waktu</div><div class="author">Stephen Hawking</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="sains" data-title="asal usul spesies charles darwin"><div class="book-cover">AU</div><div class="book-info"><div class="title">Asal Usul Spesies</div><div class="author">Charles Darwin</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="sains" data-title="cosmos carl sagan"><div class="book-cover">CS</div><div class="book-info"><div class="title">Cosmos</div><div class="author">Carl Sagan</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="pengembangan-diri" data-title="the power of habit charles duhigg"><div class="book-cover">PH</div><div class="book-info"><div class="title">The Power of Habit</div><div class="author">Charles Duhigg</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="pengembangan-diri" data-title="7 habits stephen covey"><div class="book-cover">7H</div><div class="book-info"><div class="title">7 Habits of Highly Effective People</div><div class="author">Stephen Covey</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="non-fiksi" data-title="factfulness hans rosling"><div class="book-cover">FF</div><div class="book-info"><div class="title">Factfulness</div><div class="author">Hans Rosling</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="fiksi" data-title="ayat ayat cinta habiburrahman el shirazy"><div class="book-cover">AC</div><div class="book-info"><div class="title">Ayat-Ayat Cinta</div><div class="author">Habiburrahman El Shirazy</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="non-fiksi" data-title="homo deus yuval noah harari"><div class="book-cover">HD</div><div class="book-info"><div class="title">Homo Deus</div><div class="author">Yuval Noah Harari</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="sains" data-title="a brief history of time stephen hawking"><div class="book-cover">BH</div><div class="book-info"><div class="title">A Brief History of Time</div><div class="author">Stephen Hawking</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+          <div class="book-card" data-cat="pengembangan-diri" data-title="think and grow rich napoleon hill"><div class="book-cover">TG</div><div class="book-info"><div class="title">Think and Grow Rich</div><div class="author">Napoleon Hill</div><button class="btn primary">Ajukan Pinjam</button></div></div>
+        </div>
+
+        <div class="no-result" id="book-no-result" style="display:none;">Buku tidak ditemukan.</div>
+      </section>
+
+      <section class="page" id="page-u-pengajuan">
+        <div class="page-header">
+          <div><div class="eyebrow">Status Ajuan</div><h1>Daftar Pengajuan Pinjaman</h1><div class="desc">Tunjukkan halaman ini ke pustakawan saat mengambil buku</div></div>
+        </div>
+        <div class="panel">
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Buku</th><th>Tanggal Ajuan</th><th>Status</th></tr></thead>
+            <tbody id="pengajuan-body"><tr><td>Filosofi Teras</td><td>12 Jul 2026</td><td><span class="badge pending">Menunggu Verifikasi</span></td></tr></tbody>
+          </table>
+        </div>
+        <div class="verify-note ok" id="pengajuan-note">Riwayat Anda bersih — pengajuan biasanya disetujui saat Anda datang ke perpustakaan.</div>
+      </section>
+
+      <section class="page" id="page-u-riwayat">
+        <div class="page-header">
+          <div><div class="eyebrow">Rekam Jejak</div><h1>Riwayat Peminjaman</h1></div>
+        </div>
+        <div class="panel">
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Buku</th><th>Tgl Pinjam</th><th>Tgl Kembali</th><th>Status</th><th>Denda</th></tr></thead>
+            <tbody id="riwayat-body">
+              <tr><td>Laut Bercerita</td><td>02 Mei 2026</td><td>14 Mei 2026</td><td><span class="badge ok">Tepat Waktu</span></td><td>—</td></tr>
+              <tr><td>Atomic Habits</td><td>20 Mar 2026</td><td>02 Apr 2026</td><td><span class="badge ok">Tepat Waktu</span></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="denda-summary" id="riwayat-denda-summary" style="display:none;"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+
+<!-- ======================================================= -->
+<!-- VIEW 3: ADMIN — dengan sidebar -->
+<!-- ======================================================= -->
+<div class="view" id="view-admin">
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">Pustaka<span>.</span><div class="sub">ADMIN PANEL</div></div>
+      <div class="nav-item active" data-page="a-dashboard"><span class="label">Dashboard</span></div>
+      <div class="nav-item" data-page="a-verifikasi"><span class="label">Verifikasi Peminjaman</span></div>
+      <div class="nav-item" data-page="a-buku"><span class="label">Daftar Buku</span></div>
+      <div class="nav-item" data-page="a-anggota"><span class="label">Anggota</span></div>
+      <div class="nav-item" data-page="a-riwayat"><span class="label">Riwayat Peminjaman</span></div>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="avatar">A</div>
+          <div><div class="name">Admin Pustaka</div><div class="role">Pustakawan</div></div>
+        </div>
+        <button class="btn ghost logout-btn" onclick="switchTo('login')">Keluar</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="page active" id="page-a-dashboard">
+        <div class="page-header">
+          <div><div class="eyebrow">Ringkasan</div><h1>Dashboard</h1><div class="desc">Kondisi perpustakaan hari ini</div></div>
+        </div>
+        <div class="stat-row row row-cols-2 row-cols-md-4 g-3 mb-4">
+          <div class="col"><div class="stat-card"><div class="num">1.284</div><div class="label">Total Buku</div></div></div>
+          <div class="col"><div class="stat-card"><div class="num">312</div><div class="label">Anggota Aktif</div></div></div>
+          <div class="col"><div class="stat-card"><div class="num">3</div><div class="label">Pengajuan Menunggu</div></div></div>
+          <div class="col"><div class="stat-card"><div class="num">7</div><div class="label">Terlambat</div></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Pengajuan Terbaru</div>
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Anggota</th><th>Buku</th><th>Tanggal</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Haikal Ramadhan</td><td>Filosofi Teras</td><td>12 Jul 2026</td><td><span class="badge pending">Menunggu</span></td></tr>
+              <tr><td>Rendi Saputra</td><td>Bumi Manusia</td><td>11 Jul 2026</td><td><span class="badge pending">Menunggu</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="page" id="page-a-verifikasi">
+        <div class="page-header">
+          <div><div class="eyebrow">Cek Sebelum Serah Terima</div><h1>Verifikasi Peminjaman</h1><div class="desc">Periksa riwayat sebelum menyetujui pengambilan buku</div></div>
+        </div>
+
+        <div class="verify-box">
+          <div class="verify-head"><div class="avatar">H</div><div><div class="name">Haikal Ramadhan</div><div class="meta">PST-0231 · Mengajukan: Filosofi Teras</div></div></div>
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Buku Sebelumnya</th><th>Pinjam</th><th>Kembali</th><th>Status</th></tr></thead>
+            <tbody><tr><td>Laut Bercerita</td><td>02 Mei 2026</td><td>14 Mei 2026</td><td><span class="badge ok">Tepat Waktu</span></td></tr></tbody>
+          </table>
+          <div class="verify-note ok">✓ Aman: seluruh riwayat dikembalikan tepat waktu, tidak ada denda.</div>
+          <div class="verify-actions"><button class="btn approve">Approve — Serahkan Buku</button></div>
+        </div>
+
+        <div class="verify-box">
+          <div class="verify-head"><div class="avatar">R</div><div><div class="name">Rendi Saputra</div><div class="meta">PST-0104 · Mengajukan: Bumi Manusia</div></div></div>
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Buku Sebelumnya</th><th>Pinjam</th><th>Kembali</th><th>Status</th></tr></thead>
+            <tbody><tr><td>Sang Pemimpi</td><td>01 Jun 2026</td><td>—</td><td><span class="badge danger">Belum Dikembalikan</span></td></tr></tbody>
+          </table>
+          <div class="verify-note danger">✕ Ditolak: Buku "Sang Pemimpi" tanggal 01 Jun 2026 belum dikembalikan.</div>
+          <div class="verify-actions"><button class="btn reject" disabled>Ditolak</button></div>
+        </div>
+
+        <div class="verify-box">
+          <div class="verify-head"><div class="avatar">S</div><div><div class="name">Sinta Wulandari</div><div class="meta">PST-0076 · Mengajukan: Filosofi Teras</div></div></div>
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Buku Sebelumnya</th><th>Pinjam</th><th>Kembali</th><th>Status</th></tr></thead>
+            <tbody><tr><td>Perahu Kertas</td><td>05 Mei 2026</td><td>25 Mei 2026</td><td><span class="badge danger">Denda Rp15.000</span></td></tr></tbody>
+          </table>
+          <div class="verify-note danger">✕ Ditolak: Denda keterlambatan Rp15.000 belum dibayar.</div>
+          <div class="verify-actions"><button class="btn reject" disabled>Ditolak</button></div>
+        </div>
+
+        <div class="verify-box">
+          <div class="verify-head"><div class="avatar">D</div><div><div class="name">Dedi Kurniawan</div><div class="meta">PST-0142 · Mengajukan: Sapiens</div></div></div>
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Buku Sebelumnya</th><th>Pinjam</th><th>Kembali</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Cosmos</td><td>03 Jun 2026</td><td>25 Jun 2026</td><td><span class="badge danger">Terlambat 8 Hari</span></td></tr>
+              <tr><td>Homo Deus</td><td>10 Apr 2026</td><td>—</td><td><span class="badge danger">Belum Dikembalikan</span></td></tr>
+            </tbody>
+          </table>
+          <div class="verify-note danger">✕ Ditolak: Buku "Homo Deus" tanggal 10 Apr 2026 belum dikembalikan, riwayat sering terlambat.</div>
+          <div class="verify-actions"><button class="btn reject" disabled>Ditolak</button></div>
+        </div>
+
+        <div class="verify-box">
+          <div class="verify-head"><div class="avatar">M</div><div><div class="name">Maya Andini</div><div class="meta">PST-0189 · Mengajukan: Cosmos</div></div></div>
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Buku Sebelumnya</th><th>Pinjam</th><th>Kembali</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Ayat-Ayat Cinta</td><td>12 Mei 2026</td><td>30 Mei 2026</td><td><span class="badge danger">Denda Rp24.000</span></td></tr>
+              <tr><td>Think and Grow Rich</td><td>01 Mar 2026</td><td>15 Mar 2026</td><td><span class="badge ok">Tepat Waktu</span></td></tr>
+            </tbody>
+          </table>
+          <div class="verify-note danger">✕ Ditolak: Denda keterlambatan Rp24.000 belum dibayar.</div>
+          <div class="verify-actions"><button class="btn reject" disabled>Ditolak</button></div>
+        </div>
+      </section>
+
+      <section class="page" id="page-a-buku">
+        <div class="page-header">
+          <div><div class="eyebrow">Katalog</div><h1>Daftar Buku</h1></div>
+          <button class="btn primary">+ Tambah Buku</button>
+        </div>
+        <div class="panel">
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Kode</th><th>Judul</th><th>Penulis</th><th>Stok</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>BK-0231</td><td>Filosofi Teras</td><td>Henry Manampiring</td><td>4</td><td><span class="badge ok">Tersedia</span></td></tr>
+              <tr><td>BK-0104</td><td>Bumi Manusia</td><td>Pramoedya A. Toer</td><td>0</td><td><span class="badge danger">Habis</span></td></tr>
+              <tr><td>BK-0055</td><td>Atomic Habits</td><td>James Clear</td><td>5</td><td><span class="badge ok">Tersedia</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="page" id="page-a-anggota">
+        <div class="page-header">
+          <div><div class="eyebrow">Basis Data</div><h1>Anggota</h1></div>
+          <button class="btn primary">+ Tambah Anggota</button>
+        </div>
+        <div class="panel">
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Nama</th><th>ID Anggota</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td class="member-link" onclick="viewMemberHistory('haikal')">Haikal Ramadhan</td><td>PST-0231</td><td><span class="badge ok">Aman</span></td></tr>
+              <tr><td class="member-link" onclick="viewMemberHistory('rendi')">Rendi Saputra</td><td>PST-0104</td><td><span class="badge danger">Terlambat</span></td></tr>
+              <tr><td class="member-link" onclick="viewMemberHistory('sinta')">Sinta Wulandari</td><td>PST-0076</td><td><span class="badge danger">Denda</span></td></tr>
+              <tr><td class="member-link" onclick="viewMemberHistory('dedi')">Dedi Kurniawan</td><td>PST-0142</td><td><span class="badge danger">Terlambat</span></td></tr>
+              <tr><td class="member-link" onclick="viewMemberHistory('maya')">Maya Andini</td><td>PST-0189</td><td><span class="badge danger">Denda</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="page" id="page-a-riwayat">
+        <div class="page-header">
+          <div><div class="eyebrow">Log Transaksi</div><h1>Riwayat Peminjaman Anggota</h1><div class="desc">Klik nama anggota untuk melihat detail riwayat & denda</div></div>
+        </div>
+
+        <div class="toolbar">
+          <input class="search-input" type="text" id="admin-riwayat-search" placeholder="Cari nama anggota atau judul buku...">
+        </div>
+
+        <div class="panel">
+          <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Anggota</th><th>Buku</th><th>Tgl Pinjam</th><th>Tgl Kembali</th><th>Status</th></tr></thead>
+            <tbody id="admin-riwayat-body">
+              <tr data-member="haikal" data-title="haikal ramadhan laut bercerita"><td class="member-link" onclick="showMemberDetail('haikal')">Haikal Ramadhan</td><td>Laut Bercerita</td><td>02 Mei 2026</td><td>14 Mei 2026</td><td><span class="badge ok">Tepat Waktu</span></td></tr>
+              <tr data-member="haikal" data-title="haikal ramadhan atomic habits"><td class="member-link" onclick="showMemberDetail('haikal')">Haikal Ramadhan</td><td>Atomic Habits</td><td>20 Mar 2026</td><td>02 Apr 2026</td><td><span class="badge ok">Tepat Waktu</span></td></tr>
+              <tr data-member="haikal" data-title="haikal ramadhan negeri 5 menara"><td class="member-link" onclick="showMemberDetail('haikal')">Haikal Ramadhan</td><td>Negeri 5 Menara</td><td>05 Jan 2026</td><td>18 Jan 2026</td><td><span class="badge ok">Tepat Waktu</span></td></tr>
+              <tr data-member="rendi" data-title="rendi saputra sang pemimpi"><td class="member-link" onclick="showMemberDetail('rendi')">Rendi Saputra</td><td>Sang Pemimpi</td><td>01 Jun 2026</td><td>—</td><td><span class="badge danger">Belum Dikembalikan</span></td></tr>
+              <tr data-member="rendi" data-title="rendi saputra cantik itu luka"><td class="member-link" onclick="showMemberDetail('rendi')">Rendi Saputra</td><td>Cantik Itu Luka</td><td>14 Feb 2026</td><td>28 Feb 2026</td><td><span class="badge ok">Tepat Waktu</span></td></tr>
+              <tr data-member="sinta" data-title="sinta wulandari perahu kertas"><td class="member-link" onclick="showMemberDetail('sinta')">Sinta Wulandari</td><td>Perahu Kertas</td><td>05 Mei 2026</td><td>25 Mei 2026</td><td><span class="badge danger">Denda Rp15.000</span></td></tr>
+              <tr data-member="dedi" data-title="dedi kurniawan cosmos"><td class="member-link" onclick="showMemberDetail('dedi')">Dedi Kurniawan</td><td>Cosmos</td><td>03 Jun 2026</td><td>25 Jun 2026</td><td><span class="badge danger">Terlambat 8 Hari</span></td></tr>
+              <tr data-member="dedi" data-title="dedi kurniawan homo deus"><td class="member-link" onclick="showMemberDetail('dedi')">Dedi Kurniawan</td><td>Homo Deus</td><td>10 Apr 2026</td><td>—</td><td><span class="badge danger">Belum Dikembalikan</span></td></tr>
+              <tr data-member="dedi" data-title="dedi kurniawan rich dad poor dad"><td class="member-link" onclick="showMemberDetail('dedi')">Dedi Kurniawan</td><td>Rich Dad Poor Dad</td><td>02 Feb 2026</td><td>16 Feb 2026</td><td><span class="badge ok">Tepat Waktu</span></td></tr>
+              <tr data-member="maya" data-title="maya andini ayat-ayat cinta"><td class="member-link" onclick="showMemberDetail('maya')">Maya Andini</td><td>Ayat-Ayat Cinta</td><td>12 Mei 2026</td><td>30 Mei 2026</td><td><span class="badge danger">Denda Rp24.000</span></td></tr>
+              <tr data-member="maya" data-title="maya andini think and grow rich"><td class="member-link" onclick="showMemberDetail('maya')">Maya Andini</td><td>Think and Grow Rich</td><td>01 Mar 2026</td><td>15 Mar 2026</td><td><span class="badge ok">Tepat Waktu</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="modal-overlay" id="member-detail-overlay" onclick="closeMemberDetail(event)">
+          <div class="modal-box">
+            <button class="modal-close" onclick="closeMemberDetail()">✕</button>
+            <div class="verify-head">
+              <div class="avatar" id="member-detail-avatar">H</div>
+              <div>
+                <div class="name" id="member-detail-name">—</div>
+                <div class="meta" id="member-detail-id">—</div>
+              </div>
+            </div>
+            <table class="table table-hover align-middle mb-0">
+              <thead><tr><th>Buku</th><th>Tgl Pinjam</th><th>Tgl Kembali</th><th>Status</th><th>Denda</th></tr></thead>
+              <tbody id="member-detail-body"></tbody>
+            </table>
+            <div class="denda-summary" id="member-detail-denda" style="display:none;"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
